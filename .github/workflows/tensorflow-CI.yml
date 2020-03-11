@@ -1,0 +1,40 @@
+name: TensorFlow CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Steps:[1] Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Steps:[2] Install dependent
+        run: |
+          npm install
+          npm run build
+          export
+        env:
+          CI: true
+          HAHA: hello_world
+
+      - name: Steps:[3] Deploy Project
+        # uses: veaba/covid-19-china-plan
+
+        env:
+          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_ACCESS_TOKEN_TENSORFLOW_CI }}
+          PUBLISH_BRANCH: gh-pages
+          # PUBLISH_DIR: ./scripts/
+          SCRIPT_MODE: true
+          PUBLISH_DIR: ./docs/.vuepress/dist
+
+        run: |
+          bash ./scripts/deploy.sh
+
