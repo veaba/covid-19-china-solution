@@ -25,6 +25,27 @@ footer: Copyright © 2020-present compile by @veaba
   </div>
 </div>
 
+<div style="text-align: center">
+</div>
+
+<div class="features">
+  <div class="feature">
+    <h2>《新冠肺炎防治手册》</h2>
+    <p>来自@全球新冠肺炎实战共享平台</p>
+  </div>
+  <div class="feature">
+    <h2>《新冠肺炎诊疗方案》第七版</h2>
+    <p>来自@中国卫健委</p>
+  </div>
+  <div class="feature">
+    <h2>《COVID-19 中国方案》</h2>
+    <p>来自@covid-19-china-solution 开源社区</p>
+  </div>
+</div>
+
+
+
+
 ::: tip 计划：
 我们将以社区协作的方式，让其他开发者共同完成编写，让其他疫情国家因中国新冠病毒方案而受益
 :::

@@ -8,7 +8,7 @@ Maybe religious beliefs, social systems, and political systems are not the same,
 <a href="https://covid-19-china-solution.datav.ai">covid-19-china-solution</a>
 </p>
 
-> 本仓库由@veaba 整理发布
+> 本仓库由@covid-19-china-solution 开源社区 整理发布
 
 ## 什么叫**COVID-19——中国方案**?
 
