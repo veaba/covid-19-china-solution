@@ -1,5 +1,5 @@
 module.exports = {
-	base: "/covid-19-china-solution/",
+	// base: "/covid-19-china-solution/",
 	title: "COVID-19 中国方案",
 	author: "veaba",
 	description: "中国在应对COVID-19（新冠病毒）所采取多种举措被整理成为文档的中国版应对方案",
