@@ -23,7 +23,6 @@ jobs:
 
       - name: 步骤：第二步 -> 安装依赖
         run: |
-#         cd ./client
           npm install
           npm run build
         env:
