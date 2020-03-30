@@ -198,3 +198,30 @@ th, td
       padding-left 0
 
 @require 'mobile.styl'
+
+.clear
+  &:after
+    display block
+    content ""
+    clear both
+ /**/
+.bt2
+  border-top 2px solid #868686
+
+.bb1
+  border-bottom  1px solid #868686
+/*首行空2个字*/
+.em-2
+  >p
+    text-indent 2em
+  >h2
+    text-indent 0.6em
+  >h3
+    text-indent 0.7em
+  >h4
+    text-indent 1em
+  >ol
+    padding-left: 3em
+  >ul
+    text-indent 3em
+

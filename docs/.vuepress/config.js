@@ -88,7 +88,8 @@ module.exports = {
 				selectText: "选择语言",
 				editLinkText: "在Github上编辑此页",
 				nav: require("./nav/zh"),
-				sidebar: require("./sidebar/zh")
+				// sidebar: require("./sidebar/zh")
+				// sidebar: 'auto'
 			},
 			//英文版
 			"/en/": {
@@ -96,15 +97,15 @@ module.exports = {
 				selectText: "Languages",
 				editLinkText: "Edit this page on Github",
 				nav: require("./nav/en"),
-				sidebar: require("./sidebar/en")
+				// sidebar: require("./sidebar/en")
 			},
-			// 阿拉伯 
+			// 阿拉伯
 			"/arab/": {
 				label: "Arabic",
 				selectText: "Arabic",
 				editLinkText: "Edit this page on Github",
 				nav: require("./nav/arab"),
-				sidebar: require("./sidebar/arab")
+				// sidebar: require("./sidebar/arab")
 			},
 			// 葡萄牙语
 			"/br/": {
@@ -112,7 +113,7 @@ module.exports = {
 				selectText: "Português",
 				editLinkText: "Edit this page on Github",
 				nav: require("./nav/br"),
-				sidebar: require("./sidebar/br")
+				// sidebar: require("./sidebar/br")
 			},
 			// 波斯语
 			"/farsi/": {
@@ -120,7 +121,7 @@ module.exports = {
 				selectText: "Farsi",
 				editLinkText: "Edit this page on Github",
 				nav: require("./nav/farsi"),
-				sidebar: require("./sidebar/farsi")
+				// sidebar: require("./sidebar/farsi")
 			},
 			// 法语
 			"/fr/": {
@@ -128,7 +129,7 @@ module.exports = {
 				selectText: "Français",
 				editLinkText: "Edit this page on Github",
 				nav: require("./nav/fr"),
-				sidebar: require("./sidebar/fr")
+				// sidebar: require("./sidebar/fr")
 			},
 			// 西班牙语
 			"/es/": {
@@ -136,7 +137,7 @@ module.exports = {
 				selectText: "español",
 				editLinkText: "Edit this page on Github",
 				nav: require("./nav/es"),
-				sidebar: require("./sidebar/es")
+				// sidebar: require("./sidebar/es")
 			},
 			// 德语
 			"/german/": {
@@ -144,7 +145,7 @@ module.exports = {
 				selectText: "Deutsch",
 				editLinkText: "Edit this page on Github",
 				nav: require("./nav/german"),
-				sidebar: require("./sidebar/german")
+				// sidebar: require("./sidebar/german")
 			},
 			// 印度尼西亚
 			"/id/": {
@@ -152,7 +153,7 @@ module.exports = {
 				selectText: "Bahasa Indonesia",
 				editLinkText: "Edit this page on Github",
 				nav: require("./nav/id"),
-				sidebar: require("./sidebar/id")
+				// sidebar: require("./sidebar/id")
 			},
 			// 意大利语
 			"/italy": {
@@ -160,7 +161,7 @@ module.exports = {
 				selectText: "Italiano",
 				editLinkText: "Edit this page on Github",
 				nav: require("./nav/italy"),
-				sidebar: require("./sidebar/italy")
+				// sidebar: require("./sidebar/italy")
 			},
 			// 日语
 			"/jp/": {
@@ -168,7 +169,7 @@ module.exports = {
 				selectText: "日本語",
 				editLinkText: "Edit this page on Github",
 				nav: require("./nav/jp"),
-				sidebar: require("./sidebar/jp")
+				// sidebar: require("./sidebar/jp")
 			},
 			// 韩语
 			"/kr/": {
@@ -176,7 +177,7 @@ module.exports = {
 				selectText: "한국어",
 				editLinkText: "Edit this page on Github",
 				nav: require("./nav/kr"),
-				sidebar: require("./sidebar/kr")
+				// sidebar: require("./sidebar/kr")
 			},
 			// 俄语
 			"/ru/": {
@@ -184,7 +185,7 @@ module.exports = {
 				selectText: "русский язык ",
 				editLinkText: "Edit this page on Github",
 				nav: require("./nav/ru"),
-				sidebar: require("./sidebar/ru")
+				// sidebar: require("./sidebar/ru")
 			},
 			// 越南语
 			"/vi/": {
@@ -192,7 +193,7 @@ module.exports = {
 				selectText: "Tiếng Việt",
 				editLinkText: "Edit this page on Github",
 				nav: require("./nav/vi"),
-				sidebar: require("./sidebar/vi")
+				// sidebar: require("./sidebar/vi")
 			},
 		}
 	},

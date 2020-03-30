@@ -4,7 +4,7 @@ actionText: 立即阅读 →
 actionLink: /guide/
 icpText: covid-19-china-plan
 icpLink: https://github.com/veaba/covid-19-china-solution
-footer: Copyright © 2020-present compile by @veaba
+footer: Copyright © 2020-present compile by @veaba License MIT
 ---
 
 <div style="text-align: center">
@@ -30,16 +30,38 @@ footer: Copyright © 2020-present compile by @veaba
 
 <div class="features">
   <div class="feature">
-    <h2>《新冠肺炎防治手册》</h2>
+    <a href="/zh/handbook-of-covid-19-prevention-and-treatment.html"> <h3>《新冠肺炎防治手册》</h3></a>
     <p>来自@全球新冠肺炎实战共享平台</p>
+    <ul>
+       <li>@马云(Jack Ma) 联合主编</li>
+       <li>
+            <a  target="_blank" href="">@全球新冠肺炎实战共享平台</a>
+       </li>
+        <li>
+            <a  target="_blank" href="">@官方中文版PDF</a>
+        </li>
+    </ul>
   </div>
   <div class="feature">
-    <h2>《新冠肺炎诊疗方案》第七版</h2>
+   <a href="/zh/traditional-chinese-medicine-TCM-treatment-7th-version.html"> <h3>《新冠肺炎诊疗方案》第七版</h3></a>
     <p>来自@中国卫健委</p>
+    <ul>
+         <li>@中国官方权威医疗机构 主编</li>
+         <li>
+            <a target="_blank" href="http://www.nhc.gov.cn/">@中国卫生健康委员会官网</a>
+         </li>
+         <li>
+            <a target="_blank"  href="">@官方中文版PDF</a>
+         </li>
+    </ul>
   </div>
   <div class="feature">
-    <h2>《COVID-19 中国方案》</h2>
+    <a href="/zh/covid-19-china-solution.html"><h3>《COVID-19 中国方案》</h3></a>
     <p>来自@covid-19-china-solution 开源社区</p>
+     <ul>
+         <li target="_blank" >@Github 开源社区 编写</li>
+         <li>非专业性总结</li>
+     </ul>
   </div>
 </div>
 
