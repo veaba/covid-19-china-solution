@@ -1,9 +1,36 @@
-#!/bin/bash
-# 照着这个脚本抄的：https://github.com/peaceiris/actions-gh-pages/blob/master/entrypoint.sh#L39
-
+# !/bin/bash
+# 基于Github Actions 前端部署脚本
+# todo 获取最新的commit 时间以显示最真实的实时数据
 set -e
-# set -ex
+# 检查Actions目录配置
+if [ -z "${PUBLISH_DIR}" ]; then
+    echo "【致命错误】：workflows尚未设置 PUBLISH_DIR"
+    exit 1
+fi
 
+# 检查设置的目录是否存在，不存在直接退出
+if [ -d "$(pwd)${PUBLISH_DIR}" ]; then
+    echo "【致命错误】：PUBLISH_DIR 尚未生成"
+    exit 1
+fi
+
+# 检查要发布的分支名称
+if [ -z "${PUBLISH_BRANCH}" ]; then
+    print_error "【致命错误】：没有发现 PUBLISH_BRANCH"
+    exit 1
+fi
+
+# 进入到build的目录
+cd "${PUBLISH_DIR}" # dist
+
+# 为gh-pages 生成CNAME，发现使用别人提供的脚本，生成的竟然是小写的CNAME文件，所以改为小写的，使用脚本写入
+
+# 设置CNAME
+if [ -n "${CNAME}" ]; then
+    echo "${CNAME}">CNAME
+fi
+
+# 格式化的输出
 function print_error() {
     echo -e "\e[31mERROR: ${1}\e[m"
 }
@@ -12,87 +39,45 @@ function print_info() {
     echo -e "\e[36mINFO: ${1}\e[m"
 }
 
-function skip() {
-    print_info "No changes detected, skipping deployment"
-    exit 0
-}
-
-# check values
+# 配置仓库地址
 if [ -n "${EXTERNAL_REPOSITORY}" ]; then
     PUBLISH_REPOSITORY=${EXTERNAL_REPOSITORY}
 else
     PUBLISH_REPOSITORY=${GITHUB_REPOSITORY}
 fi
-print_info "Deploy to ${PUBLISH_REPOSITORY}"
 
-if [ -n "${ACTIONS_DEPLOY_KEY}" ]; then
-
-    print_info "setup with ACTIONS_DEPLOY_KEY"
-
-    if [ -n "${SCRIPT_MODE}" ]; then
-        print_info "run as SCRIPT_MODE"
-        SSH_DIR="${HOME}/.ssh"
-    else
-        SSH_DIR="/root/.ssh"
-    fi
+# 配置ssh
+if [ -n "${ACCESS_TOKEN_DEPLOY}" ]; then
+    echo "设置 ACCESS_TOKEN_DEPLOY"
+    SSH_DIR="${HOME}/.ssh"
     mkdir "${SSH_DIR}"
-    ssh-keyscan -t rsa github.com > "${SSH_DIR}/known_hosts"
-    echo "${ACTIONS_DEPLOY_KEY}" > "${SSH_DIR}/id_rsa"
+    ssh-keyscan -t rsa github.com >"${SSH_DIR}/known_hosts"
+    echo "${ACCESS_TOKEN_DEPLOY}" >"${SSH_DIR}/id_rsa"
     chmod 400 "${SSH_DIR}/id_rsa"
     remote_repo="git@github.com:${PUBLISH_REPOSITORY}.git"
-else
-    print_error "not found ACTIONS_DEPLOY_KEY"
-    exit 1
 fi
 
-if [ -z "${PUBLISH_BRANCH}" ]; then
-    print_error "not found PUBLISH_BRANCH"
-    exit 1
-fi
-
-if [ -z "${PUBLISH_DIR}" ]; then
-    print_error "not found PUBLISH_DIR"
-    exit 1
-fi
-
+# 跳过配置personal_token 和 github_token
 remote_branch="${PUBLISH_BRANCH}"
 
-local_dir="${HOME}/ghpages_${RANDOM}"
-if git clone --depth=1 --single-branch --branch "${remote_branch}" "${remote_repo}" "${local_dir}"; then
-    cd "${local_dir}"
+# 配置git
+git init
+git checkout --orphan "${remote_branch}" # 积累无数次commit，不算分支
 
-    if [[ ${INPUT_KEEPFILES} == "true" ]]; then
-        print_info "Keeping existing files: ${INPUT_KEEPFILES}"
-    else
-        git rm -r --ignore-unmatch '*'
-    fi
-
-    find "${GITHUB_WORKSPACE}/${PUBLISH_DIR}" -maxdepth 1 | \
-        tail -n +2 | \
-        xargs -I % cp -rf % "${local_dir}/"
-    echo "进来吗？？"
-else
-    cd "${PUBLISH_DIR}"
-    git init
-    git checkout --orphan "${remote_branch}"
-fi
-
-echo "${local_dir}"
-
-# push to publishing branch
 git config user.name "${GITHUB_ACTOR}"
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
 git remote rm origin || true
 git remote add origin "${remote_repo}"
-git add --all
 
-print_info "Allowing empty commits: ${INPUT_EMPTYCOMMITS}"
-COMMIT_MESSAGE="【部署成功】: $(date -u) ${GITHUB_SHA}"
-if [[ ${INPUT_EMPTYCOMMITS} == "false" ]]; then
-    git commit -m "${COMMIT_MESSAGE}" || skip
-else
-    git commit --allow-empty -m "${COMMIT_MESSAGE}"
-fi
+# 更改时间
+cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-git push origin "${remote_branch}"
-print_info "${GITHUB_SHA} was successfully deployed"
+# git提交
+git add .
+push_time="$(date '+%Y-%m-%d %H:%M:%S')"
+git commit -m "【天佑中华】：${push_time}"
+
+git push origin -f "${PUBLISH_BRANCH}"
+
+print_info "${GITHUB_SHA} 漂亮！部署成功： ${push_time}"

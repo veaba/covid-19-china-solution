@@ -1,40 +1,40 @@
-name: TensorFlow CI
+name: COVID-19-china-solution CI
 
-on: [push]
+# master才触发部署
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
         node-version: [12.x]
 
     steps:
       - uses: actions/checkout@v1
-      - name: Steps:[1] Use Node.js ${{ matrix.node-version }}
+      - name: 步骤：第一步 -> 设置环境
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Steps:[2] Install dependent
+      - name: 步骤：第二步 -> 安装依赖
         run: |
+          cd ./client
           npm install
           npm run build
-          export
         env:
           CI: true
-          HAHA: hello_world
 
-      - name: Steps:[3] Deploy Project
-        # uses: veaba/covid-19-china-plan
-
+      - name: 步骤：第三步 -> 部署脚本
         env:
-          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_ACCESS_TOKEN_TENSORFLOW_CI }}
+          ACCESS_TOKEN_DEPLOY: ${{secrets.ACTIONS_ACCESS_TOKEN_NCOV_CI }}
           PUBLISH_BRANCH: gh-pages
-          # PUBLISH_DIR: ./scripts/
-          SCRIPT_MODE: true
           PUBLISH_DIR: ./docs/.vuepress/dist
-
+          CNAME: covid-19-china-solution.datav.ai
         run: |
+          chmod +x ./scripts/deploy.sh
           bash ./scripts/deploy.sh
-
