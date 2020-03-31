@@ -1875,7 +1875,7 @@ publication of the international society f or heart transplantation, 2015, 34(1)
 
 ![](../images/handbook-pre-treatment/pic-hospital.png)
 
-<div class="zy-hospital-bg" style="background:url(/pic-hospital-bg.png)">
+<div style="background:url(/pic-hospital-bg.png) no-repeat;background-size: cover">
 
 
 <div class="zy-hospital-wrap">
