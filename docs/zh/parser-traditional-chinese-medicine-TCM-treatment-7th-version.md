@@ -1,3 +1,6 @@
+---
+sidebar: auto
+---
 # 解读《新冠肺炎诊疗方案》第七版
 
 <p align="right">

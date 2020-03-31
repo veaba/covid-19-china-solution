@@ -10,7 +10,6 @@ sidebar: auto
 # 《新型冠状病毒肺炎诊疗方案》第七版
 
 <p align="center">
-    <a href="javascript:void(alert('等待校验'))">todo校验</a> |
     <a target="_blank" href="http://www.nhc.gov.cn/yzygj/s7653p/202003/46c9294a7dfe4cef80dc7f5912eb1989.shtml">原文@关于印发新型冠状病毒肺炎诊疗方案（试行第七版）的通知</a> |
     <a target="_blank" href="http://www.nhc.gov.cn/yzygj/s7653p/202003/46c9294a7dfe4cef80dc7f5912eb1989/files/ce3e6945832a438eaae415350a8ce964.pdf">
         打印本文
