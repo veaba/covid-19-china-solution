@@ -1,3 +1,8 @@
+
+<p align="center">
+![COVID-19-china-solution CI](https://github.com/veaba/covid-19-china-solution/workflows/COVID-19-china-solution%20CI/badge.svg)
+<p>
+
 # A COVID-19 china solution（COVID-19——中国方案）
 
 一份关于新冠病毒(COVID-19)中国方案。也许宗教信仰、社会体制、政治制度不尽相同，但个体生命有且仅有一次。
